@@ -8,9 +8,11 @@ public class Enemy : MonoBehaviour
 {
     GameObject target;
 
-    public float speed;
     public int health = 2;
+
+    public float speed;
     public float cooldowntime;
+
     private float lastHitTime;
     void Start()
     {
