@@ -7,7 +7,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public int speed = 10;
-    public int sprintSpeed = 20;
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -34,11 +33,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            speed = sprintSpeed;
+            speed = 20;
         }
-        if (Input.GetKey(KeyCode.LeftControl))
+        else if (Input.GetKey(KeyCode.LeftControl))
         {
-            speed /= 2;
+            speed = 5;
         }
         else
         {
