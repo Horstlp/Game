@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public int speed = 10;
     public Rigidbody2D rb;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -38,10 +39,12 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKey(KeyCode.LeftControl))
         {
             speed = 5;
+            animator.SetBool("Sneak", true);
         }
         else
         {
             speed = 10;
+            animator.SetBool("Sneak", false);
         }
 
         
