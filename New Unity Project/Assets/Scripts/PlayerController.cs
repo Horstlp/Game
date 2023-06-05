@@ -36,9 +36,15 @@ public class PlayerController : MonoBehaviour
         {
             speed = sprintSpeed;
         }
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            speed /= 2;
+        }
         else
         {
             speed = 10;
         }
+
+        
     }
 }
