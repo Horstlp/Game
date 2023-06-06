@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public int speed = 10;
+    private bool isFacingRight = true;
     public Rigidbody2D rb;
     public Animator animator;
 
@@ -23,12 +24,20 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
+        animator.SetFloat("Horizontal", horizontalInput);
         float verticalInput = Input.GetAxis("Vertical");
-        
+        animator.SetFloat("Vertical", verticalInput);
+
 
         Vector2 movement = new Vector2(horizontalInput, verticalInput);
 
         rb.velocity = movement * speed;
+
+        if (horizontalInput > 0 && !isFacingRight || horizontalInput < 0 && isFacingRight)
+        {
+            Flip();
+        }
+        
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -46,5 +55,11 @@ public class PlayerController : MonoBehaviour
         }
 
         
+    }
+
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        transform.Rotate(0f, 180f, 0f);
     }
 }
