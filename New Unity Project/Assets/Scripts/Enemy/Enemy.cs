@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     private float lastHitTime;
     void Start()
     {
-        target = GameObject.FindWithTag("Hero");
+        target = GameObject.FindWithTag("Player");
     }
 
     void Update()
@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Hero")
+        if (collision.gameObject.tag == "Player")
         {
             
         }
