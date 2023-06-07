@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossLife : MonoBehaviour
+public class EnemyBow : MonoBehaviour
 {
-    public GameObject target;
-    public GameObject prefab_Fireball;
+    private GameObject target;
+    public GameObject prefab_arrow;
 
-    public float fireballSpeed;
-    public int health = 30;
+    public float arrowSpeed;
+    public int health;
     public float cooldowntime;
     float lastShootTime;
     void Start()
     {
-
+        target = GameObject.FindWithTag("Player");
     }
 
     void Update()
@@ -33,8 +33,8 @@ public class BossLife : MonoBehaviour
     {
         Vector2 direction = target.transform.localPosition - transform.localPosition;
         direction.Normalize();
-        GameObject arrow = Instantiate(prefab_Fireball, transform.position, Quaternion.identity);
-        arrow.GetComponent<Rigidbody2D>().velocity = direction * fireballSpeed;
+        GameObject arrow = Instantiate(prefab_arrow, transform.position, Quaternion.identity);
+        arrow.GetComponent<Rigidbody2D>().velocity = direction * arrowSpeed;
     }
 
     public void hit(int x)
