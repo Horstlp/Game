@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 {
     public int speed = 10;
     private bool isFacingRight = true;
+    private bool InvOn = false;
+    public GameObject Inventory;
     public Rigidbody2D rb;
     public Animator animator;
 
@@ -18,7 +20,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.E) && !InvOn)
+        {
+            Inventory.SetActive(true);
+            InvOn = true;
+            return;
+        }
+        else if (Input.GetKeyDown(KeyCode.E) && InvOn)
+        {
+            Inventory.SetActive(false);
+            InvOn = false;
+            return;
+        }
     }
 
     private void FixedUpdate()
