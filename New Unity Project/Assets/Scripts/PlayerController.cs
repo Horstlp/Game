@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour
             InvOn = true;
             return;
         }
+        else if (Inventory.activeSelf == false)
+        {
+            InvOn = false;
+        }
         else if (Input.GetKeyDown(KeyCode.E) && InvOn)
         {
             Inventory.SetActive(false);
@@ -73,6 +77,7 @@ public class PlayerController : MonoBehaviour
     public void CloseInv()
     {
         Inventory.SetActive(false);
+        return;
     }
     private void Flip()
     {
