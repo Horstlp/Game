@@ -12,6 +12,14 @@ public class PlayerController : MonoBehaviour
     public GameObject Inventory;
     public Rigidbody2D rb;
     public Animator animator;
+    public int gold_Coins;
+
+    public void AddGold(int amount)
+    {
+        gold_Coins += amount;
+    }
+
+    //PlayerController.AddGold(goldmenge)     Wenn ihr im anderem script gold hinzufügen oder entfernen wollt
 
     void Start()
     {
