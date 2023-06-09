@@ -70,6 +70,10 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void CloseInv()
+    {
+        Inventory.SetActive(false);
+    }
     private void Flip()
     {
         isFacingRight = !isFacingRight;
