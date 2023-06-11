@@ -6,16 +6,27 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //Player Stats///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public int speed = 10;
-    private bool isFacingRight = true;
-    private bool InvOn = false;
-    public GameObject Inventory;
-    public Rigidbody2D rb;
-    public Animator animator;
-    
+    public int attackDMG = 10;
+    public int maxHealth = 10;
+    public int maxStamina = 10;
+
+    //Others/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public int gold_Coins;
     public int silver_Coins;
 
+    private bool isFacingRight = true;
+    private bool InvOn = false;
+
+    public GameObject Inventory;
+    public Rigidbody2D rb;
+    public Animator animator;
+
+    public Slider speedSlider;
+    
     public void AddGold(int amount)
     {
         gold_Coins += amount;
@@ -31,6 +42,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        speedSlider.Value = speed;
     }
 
     void Update()
@@ -98,5 +110,47 @@ public class PlayerController : MonoBehaviour
     {
         isFacingRight = !isFacingRight;
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    public void IncreaseStat(int Stat)
+    {
+        if(Stat == 1) 
+        {
+            speed += 1;
+            speedSlider.Value = speed;
+        }
+        if (Stat == 2)
+        {
+            attackDMG += 1;
+        }
+        if (Stat == 3)
+        {
+            maxHealth += 1;
+        }
+        if (Stat == 4)
+        {
+            maxStamina += 1;
+        }
+    }
+
+    public void DecreaseStat(int Stat)
+    {
+        if (Stat == 1)
+        {
+            speed -= 1;
+            speedSlider.Value = speed;
+        }
+        if (Stat == 2)
+        {
+            attackDMG += 1;
+        }
+        if (Stat == 3)
+        {
+            maxHealth += 1;
+        }
+        if (Stat == 4)
+        {
+            maxStamina += 1;
+        }
     }
 }
