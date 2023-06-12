@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
     //Player Stats///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public int speed = 10;
+    public int attackSpeed = 10;
     public int attackDMG = 10;
     public int maxHealth = 10;
     public int maxStamina = 10;
@@ -20,13 +22,14 @@ public class PlayerController : MonoBehaviour
 
     private bool isFacingRight = true;
     private bool InvOn = false;
+    private bool normInvOn = true;
 
     public GameObject Inventory;
+    public GameObject normInv;
+    public GameObject statsInv;
     public Rigidbody2D rb;
     public Animator animator;
-
-    public Slider speedSlider;
-    
+    public Slider speedSlider;   
     public void AddGold(int amount)
     {
         gold_Coins += amount;
@@ -42,7 +45,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        speedSlider.Value = speed;
+        speedSlider.value = speed;
     }
 
     void Update()
@@ -61,6 +64,20 @@ public class PlayerController : MonoBehaviour
         {
             Inventory.SetActive(false);
             InvOn = false;
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.F) && !normInvOn)
+        {
+            normInv.SetActive(true);
+            statsInv.SetActive(false);
+            normInvOn = true;
+            return;
+        }
+        else if (Input.GetKeyDown(KeyCode.F) && normInvOn)
+        {
+            normInv.SetActive(false);
+            statsInv.SetActive(true);
+            normInvOn = false;
             return;
         }
     }
@@ -117,7 +134,7 @@ public class PlayerController : MonoBehaviour
         if(Stat == 1) 
         {
             speed += 1;
-            speedSlider.Value = speed;
+            speedSlider.value = speed;
         }
         if (Stat == 2)
         {
@@ -138,7 +155,7 @@ public class PlayerController : MonoBehaviour
         if (Stat == 1)
         {
             speed -= 1;
-            speedSlider.Value = speed;
+            speedSlider.value = speed;
         }
         if (Stat == 2)
         {
@@ -152,5 +169,13 @@ public class PlayerController : MonoBehaviour
         {
             maxStamina += 1;
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+       
+
+
+
+
     }
 }
