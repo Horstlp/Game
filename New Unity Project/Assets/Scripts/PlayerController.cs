@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        speedSlider.value = speed;
+        
     }
 
     void Update()
